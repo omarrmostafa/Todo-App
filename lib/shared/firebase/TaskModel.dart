@@ -1,9 +1,9 @@
 class TaskModel {
-  String id;
-  String title;
-  String Description;
-  int date;
-  bool isDone;
+   String? id;
+   String? title;
+   String? Description;
+   int? date;
+   bool? isDone;
 
   TaskModel({this.id = "",
     required this.title,

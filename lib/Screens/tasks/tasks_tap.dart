@@ -2,7 +2,6 @@ import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/tasks/task_item.dart';
 import 'package:todo_app/my_theme.dart';
-import 'package:todo_app/shared/firebase/TaskModel.dart';
 import 'package:todo_app/shared/firebase/firebase_function.dart';
 
 class TasksTab extends StatefulWidget {
@@ -51,13 +50,11 @@ class _TasksTabState extends State<TasksTab> {
               } else {
                 var tasks =
                     snapshot.data?.docs.map((e) => e.data()).toList()??[];
-                return Expanded(
-                  child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      return TasksItem(task: tasks[index],);
-                    },
-                    itemCount: tasks.length,
-                  ),
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return TasksItem(task: tasks[index],);
+                  },
+                  itemCount: tasks.length,
                 );
               }
             },

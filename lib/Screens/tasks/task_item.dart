@@ -20,7 +20,7 @@ class TasksItem extends StatelessWidget {
           startActionPane: ActionPane(motion: DrawerMotion(), children: [
             SlidableAction(
               onPressed: (context) {
-                FirebaseFunctions.deleteTask(task.id);
+                FirebaseFunctions.deleteTask(task.id!);
               },
               icon: Icons.delete,
               label: "Delete",
@@ -52,12 +52,12 @@ class TasksItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(task.title),
-                  Text(task.Description),
+                  Text(task.title??""),
+                  Text(task.Description??""),
                 ],
               ),
               Spacer(),
-              task.isDone?
+              task.isDone!?
               Container(
                   padding:
                   EdgeInsets.symmetric(horizontal: 12, vertical: 2),
