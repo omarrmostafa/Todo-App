@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/my_theme.dart';
-import 'package:todo_app/shared/firebase/TaskModel.dart';
+import 'package:todo_app/Screens/tasks/TaskModel.dart';
 import 'package:todo_app/shared/firebase/firebase_function.dart';
 
 class TaskBottomSheet extends StatefulWidget {
@@ -96,6 +97,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     TaskModel taskModel = TaskModel(
+                      userId: FirebaseAuth.instance.currentUser!.uid,
                         title: titleController.text,
                         Description: descriptionController.text,
                         date: DateUtils.dateOnly(selectedDate)

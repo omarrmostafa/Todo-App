@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/Screens/Login/Login.dart';
 import 'package:todo_app/Screens/settings/settings_tab.dart';
 import 'package:todo_app/Screens/tasks/tasks_tap.dart';
+import 'package:todo_app/provider/myProvider.dart';
 
 import '../Screens/tasks/add_task_bottom_sheet.dart';
 
@@ -18,10 +22,17 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        title: Text("TO DO"),
+        actions: [
+          IconButton(onPressed: (){
+            FirebaseAuth.instance.signOut();
+            Navigator.pushNamedAndRemoveUntil(context, Login.routeName, (route) => false);
+          }, icon:Icon(Icons.logout))
+        ],
+        title: Text("TO DO${provider.usermodel?.name}"),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(

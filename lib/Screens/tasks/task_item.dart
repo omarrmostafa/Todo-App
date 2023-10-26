@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/my_theme.dart';
-import 'package:todo_app/shared/firebase/TaskModel.dart';
+import 'package:todo_app/Screens/tasks/TaskModel.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo_app/shared/firebase/firebase_function.dart';
 
